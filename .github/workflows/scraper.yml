@@ -2,31 +2,36 @@ name: V2Ray Scraper Auto Update
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
-  workflow_dispatch:
+    - cron: '0 */12 * * *'  # اجرا هر ۱۲ ساعت
+  workflow_dispatch:        # امکان اجرای دستی
 
 jobs:
-  build:
+  update-configs:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
-      - name: Install Dependencies
-        run: pip install requests beautifulsoup4
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
 
-      - name: Run Scraper
-        run: python config_scraper.py
+    - name: Run config scraper
+      run: python config_scraper.py
 
-      - name: Commit and Push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add v2ray_configs.txt
-          git commit -m "🔄 Auto update config file" || echo "No changes to commit"
-          git push
+    - name: Commit and push updated config
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add v2ray_configs.txt
+        git commit -m "Auto update v2ray_configs.txt [skip ci]" || echo "No changes to commit"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
