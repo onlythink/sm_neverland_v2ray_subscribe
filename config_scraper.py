@@ -41,10 +41,16 @@ def main():
         links = extract_links_from_channel(ch)
         all_links.extend(links)
     all_links = list(dict.fromkeys(all_links))
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        for link in all_links:
-            f.write(link.strip() + "\n")
-    print(f"\n✅ جمع‌آوری کامل شد. {len(all_links)} کانفیگ ذخیره شد در: {OUTPUT_FILE}")
+    
+    # تبدیل لیست به رشته با جداکننده خط جدید
+    all_configs = "\n".join(all_links)
+    
+    # نوشتن کل رشته در فایل خروجی
+    output_file = OUTPUT_FILE
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(all_configs)
+    
+    print(f"\n✅ جمع‌آوری کامل شد. {len(all_links)} کانفیگ ذخیره شد در: {output_file}")
 
 if __name__ == "__main__":
     main()
