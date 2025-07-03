@@ -1,55 +1,13 @@
-# Byte-compiled / optimized / DLL files
+# Ignore Python cache files
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+# Ignore environment files
+.env
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# PyCharm
-.idea/
-
-# VS Code
-.vscode/
-
-# mypy
-.mypy_cache/
-
-# Mac OS
+# macOS system files
 .DS_Store
 
-# Output files
-v2ray_configs.txt
+# IMPORTANT: Ensure v2ray_configs.txt is NOT ignored
+# اگر این خط وجود داشت، حذف یا کامنت شود:
+# v2ray_configs.txt
