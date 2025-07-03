@@ -2,8 +2,8 @@ name: V2Ray Scraper Auto Update
 
 on:
   schedule:
-    - cron: "0 */12 * * *"  # هر 12 ساعت اجرا می‌شود
-  workflow_dispatch:  # امکان اجرای دستی
+    - cron: "0 */12 * * *"  # اجرا هر 12 ساعت
+  workflow_dispatch:        # امکان اجرای دستی
 
 jobs:
   scrape:
@@ -29,6 +29,6 @@ jobs:
       run: |
         git config user.name "Sm Neverland"
         git config user.email "iamdaryoush@gmail.com"
-        git add v2ray_configs.txt
-        git commit -m "Updated v2ray configs by Sm Neverland"
+        git add -f v2ray_configs.txt
+        git diff --cached --quiet || git commit -m "Updated v2ray configs by Sm Neverland"
         git push
