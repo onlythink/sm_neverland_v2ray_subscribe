@@ -32,8 +32,3 @@ jobs:
         git add v2ray_configs.txt
         git commit -m "Updated v2ray configs by Sm Neverland"
         git push
-      env:
-        # اگر لازم شد از توکن استفاده کن (مثل GITHUB_TOKEN)
-        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # اما معمولا این قسمت با دسترسی پیشفرض کار می‌کند.
-        # اگر پیغام خطا دیدی اطلاع بده
